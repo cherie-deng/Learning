@@ -1,12 +1,25 @@
-using System;
+using System.IO;
 
-namespace Day1
+namespace AdventOfCode
 {
     public class Day1Part1
     {
-        public int CountLargerMeasurements()
+        public int CountLargerMeasurements(string filepath)
         {
-            return 1;
+            var input = File.ReadAllLines(filepath);
+            var intArray = Array.ConvertAll(input, int.Parse);
+
+            var increases = 0;
+
+            for (int i = 1; i < intArray.Length; i++)
+            {
+                if (intArray[i] > intArray[i - 1])
+                {
+                    increases++;
+                }
+            }
+
+            return increases;
         }
     }
 }
